@@ -1,29 +1,29 @@
-DROP DATABASE IF EXISTS employee_db;
-CREATE DATABASE employee_db;
-USE employee_db; 
+INSERT INTO department (name)
+VALUES 
+('Process Control'),
+('Maintenance'),
+('Engineering'),
+('Operations');
 
-CREATE TABLE department (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(30) NOT NULL
-);
+INSERT INTO role (title, salary, department_id)
+VALUES
+('Instrument Technician', 80000, 1),
+('Software Engineer', 120000, 1),
+('Mechanic', 75000, 2), 
+('Electrician', 80000, 2),
+('Senior Process Engineer', 170000, 3), 
+('Technology Director', 190000, 3),
+('Plant Operator', 70000, 4),
+('Operations Manager', 90000, 4);
 
-CREATE TABLE role (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(30) NOT NULL, 
-    salary DECIMAL NOT NULL,
-    department_id INTEGER, 
-    INDEX dep_ind (department_id),
-    CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES department(id) ON DELETE SET NULL
-);
 
-CREATE TABLE employee (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
-    role_id INTEGER, 
-    INDEX role_ind (role_id),
-    CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE SET NULL,
-    manager_id INTEGER,
-    INDEX manager_ind (manager_id),
-    CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL
-);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES 
+('Sean', 'Bean', 2, null),
+('Huy', 'Nguyen', 1, null),
+('Toby', 'Okeefe', 4, null),
+('Sparky', 'Vineyard', 3, 3),
+('Carla', 'Gray', 6, null),
+('Pete', 'Hohreiter', 5, 5),
+('Jerry', 'Seinfeld', 7, null),
+('Elaine', 'Benes', 8, 7);
