@@ -77,3 +77,34 @@ afterConnection = () => {
           addRole();
         }
   
+
+      if (choices === "Add an employee") {
+        addEmployee();
+      }
+
+      if (choices === "Update an employee role") {
+        updateEmployee();
+      }
+
+      if (choices === "Update an employee manager") {
+        updateManager();
+      }
+
+      if (choices === "View employees by department") {
+        employeeDepartment();
+      }
+
+      if (choices === "Delete a department") {
+        deleteDepartment();
+      }
+
+      if (choices === "Delete a role") {
+        deleteRole();
+      }
+
+      if (choices === "Delete an employee") {
+        deleteEmployee();
+      }
+
+      if (choices === "View department budgets") {
+        viewBudget();
