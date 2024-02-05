@@ -21,3 +21,59 @@ connection.connect(err => {
   afterConnection();
 });
 
+// function after connection is established and welcome image shows 
+afterConnection = () => {
+    console.log("***********************************")
+    console.log("*                                 *")
+    console.log("*        EMPLOYEE MANAGER         *")
+    console.log("*                                 *")
+    console.log("***********************************")
+    promptUser();
+  };
+  
+  // inquirer prompt for first action
+  const promptUser = () => {
+    inquirer.prompt ([
+      {
+        type: 'list',
+        name: 'choices', 
+        message: 'What would you like to do?',
+        choices: ['View all departments', 
+                  'View all roles', 
+                  'View all employees', 
+                  'Add a department', 
+                  'Add a role', 
+                  'Add an employee', 
+                  'Update an employee role',
+                  'Update an employee manager',
+                  "View employees by department",
+                  'Delete a department',
+                  'Delete a role',
+                  'Delete an employee',
+                  'View department budgets',
+                  'No Action']
+      }
+    ])
+      .then((answers) => {
+        const { choices } = answers; 
+
+        if (choices === "View all departments") {
+          showDepartments();
+        }
+  
+        if (choices === "View all roles") {
+          showRoles();
+        }
+  
+        if (choices === "View all employees") {
+          showEmployees();
+        }
+  
+        if (choices === "Add a department") {
+          addDepartment();
+        }
+  
+        if (choices === "Add a role") {
+          addRole();
+        }
+  
