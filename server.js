@@ -1,25 +1,31 @@
 // import mysql2
-const mysql = require('mysql2')
+const mysql = require('mysql2');
 // import inquirer 
 const inquirer = require('inquirer'); 
-// import console.table
-const cTable = require('console.table'); 
 
-require('dotenv').config()
+const express = require('express');
+
+//require('dotenv').config()
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+// Express middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // connection to database
-const connection = mysql.createConnection({
+const db = mysql.createConnection(
+  {
   host: 'localhost',
   user: 'root',
-  password: process.env.MYSQL_PASSWORD,
-  database: 'employee_db'
-});
+  password: '',
+  database: 'employee_db',
+  socketPath: '/tmp/mysql.sock'
+},
 
-connection.connect(err => {
-  if (err) throw err;
-  console.log('connected as id ' + connection.threadId);
-  afterConnection();
-});
+console.log('Connected to the employee database.'))
+
 
 // function after connection is established and welcome image  
 afterConnection = () => {
@@ -28,8 +34,39 @@ afterConnection = () => {
     console.log("*        EMPLOYEE MANAGER         *")
     console.log("*                                 *")
     console.log("***********************************")
-    promptUser();
-  };
+   
+  },
+
+  console.log(afterConnection());
+
+  db.query("SELECT * FROM employee_db", null, (error, result) => {
+    if (error){
+      console.log(error);
+    }
+    console.log(result);
+    getAllEmployees();
+  });
+
+  const getAllEmployees = () => {
+  db.query("SELECT * FROM employee_db", function (error, result) {
+    
+    console.log(result)
+  });
+
+
+
+
+  }
+  app.use((req, res) => {
+    res.status(404).end();
+  });
+
+  app.listen(PORT, () => {
+    console.log('Server running on port $(PORT)');
+  });
+
+
+   //promptUser();
   // inquirer prompt
     const promptUser = () => {
     inquirer.prompt ([ {
@@ -48,10 +85,10 @@ afterConnection = () => {
                   'Delete a department',
                   'Delete a role',
                   'Delete an employee',
-                  'View department budgets',
                   'No Action'] } ])
       .then((answers) => {
         const { choices } = answers; 
+
 
         if (choices === "View all departments") {
           showDepartments();
@@ -100,10 +137,7 @@ afterConnection = () => {
       if (choices === "Delete an employee") {
         deleteEmployee();
       }
-
-      if (choices === "View department budgets") {
-        viewBudget();
-      }  
+ 
       if (choices === "No Action") {
         connection.end()
     };
@@ -573,19 +607,11 @@ employeeDepartment = () => {
   });
  });
 };
-// view department budget 
-viewBudget = () => {
-  console.log('Showing budget by department...\n');
 
-  const sql = `SELECT department_id AS id, 
-                      department.name AS department,
-                      SUM(salary) AS budget
-               FROM  role  
-               JOIN department ON role.department_id = department.id GROUP BY  department_id`;
-  
   connection.promise().query(sql, (err, rows) => {
     if (err) throw err; 
     console.table(rows);
     promptUser(); 
   });            
-};
+
+
