@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 
 const express = require('express');
 
-//require('dotenv').config()
+require('dotenv').config()
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,8 +13,9 @@ const app = express();
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
+app.use(express.static('public'));
 // connection to database
+
 const db = mysql.createConnection(
   {
   host: 'localhost',
@@ -39,13 +40,16 @@ afterConnection = () => {
 
   console.log(afterConnection());
 
-  db.query("SELECT * FROM employee_db", null, (error, result) => {
+  db.query('SELECT * FROM employee_db', (error, employees) => {
     if (error){
       console.log(error);
     }
-    console.log(result);
+    console.table(employees);
+    process.exit();
+
     getAllEmployees();
   });
+
 
   const getAllEmployees = () => {
   db.query("SELECT * FROM employee_db", function (error, result) {

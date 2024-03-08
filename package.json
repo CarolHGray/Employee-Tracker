@@ -1,12 +1,24 @@
-
 {
-"main": "server.js",
-
-  "dependencies": {
-    "console.table": "^0.10.0",
-    "dotenv": "^16.4.1",
-    "express": "^4.18.2",
-    "inquirer": "^8.2.4",
-    "mysql2": "^3.9.1"
-  }
+    "name": "Employee-Tracker",
+    "version": "1.0.0",
+    "description": "A command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.",
+    "main": "server.js",
+    "scripts": {
+        "test": "jest",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CarolHGray/Employee-Tracker.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "console.table": "^0.10.0",
+        "dotenv": "^16.4.1",
+        "express": "^4.18.3",
+        "inquirer": "^8.2.4",
+        "mysql2": "^2.3.3"
+    }
 }
