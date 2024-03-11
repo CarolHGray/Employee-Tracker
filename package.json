@@ -1,5 +1,5 @@
 {
-    "name": "Employee-Tracker",
+    "name": "employee-tracker",
     "version": "1.0.0",
     "description": "A command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.",
     "main": "server.js",
@@ -11,7 +11,12 @@
         "type": "git",
         "url": "git+https://github.com/CarolHGray/Employee-Tracker.git"
     },
-    "keywords": [],
+    "keywords": [
+        "node.js",
+        "inquirer",
+        "mysql"
+    ],
+
     "author": "",
     "license": "ISC",
     "dependencies": {
