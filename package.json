@@ -12,11 +12,7 @@
         "type": "git",
         "url": "git+https://github.com/CarolHGray/Employee-Tracker.git"
     },
-    "keywords": [
-        "node.js",
-        "inquirer",
-        "mysql"
-    ],
+    "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
@@ -25,7 +21,10 @@
         "express": "^4.18.3",
         "inquirer": "^8.2.4",
         "jest": "^29.7.0",
-        "mysql2": "^2.3.3"
+        "mysql": "^2.18.1",
+        "mysql2": "^2.3.3",
+        "seed": "^0.4.4",
+        "table": "^6.8.1"
     },
     "devDependencies": {
         "@types/node": "^20.11.25"
