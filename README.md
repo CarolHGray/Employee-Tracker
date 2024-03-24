@@ -49,7 +49,7 @@ This database was created as a exercise in using SQL for managing data.  It lets
 
 ## Link_to_Screencastify_Video_for_Demonstration:
 
-https://
+https://app.screencastify.com/v2/manage/videos/iwPUKjNg1sEVexBGNNh9
 
 
 
