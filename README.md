@@ -56,8 +56,8 @@ https://
 ## Screenshots:
 
 ![Screenshot](assets/img/screenshot1.png)
-
-
+![Screenshot](assets/img/screenshot2.png)
+![Screenshot](assets/img/screenshot3.png)
 
 ## License:
 MIT
